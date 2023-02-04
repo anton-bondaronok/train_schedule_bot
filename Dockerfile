@@ -1,5 +1,8 @@
 FROM ruby:3.2.0
-WORKDIR /bot
-COPY . /bot
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
-CMD ["ruby", "entrypoint.rb"]
+COPY . /app
+
+CMD ['ruby', 'entrypoint.rb']

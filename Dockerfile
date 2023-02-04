@@ -1,4 +1,4 @@
-FROM ruby:3.2.0
+FROM ruby:3.1.3
 WORKDIR /app
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock

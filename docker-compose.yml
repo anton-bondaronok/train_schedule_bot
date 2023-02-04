@@ -1,0 +1,13 @@
+version: '3'
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  bot:
+    build: .
+    depends_on:
+      - db

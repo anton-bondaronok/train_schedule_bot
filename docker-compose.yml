@@ -4,10 +4,11 @@ services:
     image: postgres:15
     restart: always
     environment:
-      POSTGRES_PASSWORD: example
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-  bot:
+  app:
     build: .
+    command: 'ruby entrypoint.rb'
     depends_on:
       - db

@@ -1,8 +1,8 @@
 FROM ruby:3.1.3
 WORKDIR /app
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
-COPY . /app
+COPY Gemfile Gemfile.lock ./
+RUN bundle check || bundle install
+COPY . ./
 
-CMD ['ruby', 'entrypoint.rb']
+RUN ["chmod", "+x", "/app/entrypoints/docker-entrypoint.sh"]
+

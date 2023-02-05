@@ -2,4 +2,4 @@
 
 set -e
 
-ruby entrypoint.rb
+ruby bin/bot.rb

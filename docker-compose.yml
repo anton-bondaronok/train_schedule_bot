@@ -11,6 +11,8 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
   app:
     build: .
+    tty: true
+    stdin_open: true
     env_file: .env
     command: 'entrypoints/docker-entrypoint.sh'
     depends_on:

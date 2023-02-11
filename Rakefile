@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_record'
 require 'dotenv'
 require 'erb'
@@ -5,7 +7,7 @@ require 'erb'
 namespace :db do
   Dotenv.load
   template = ERB.new File.new('config/database.yml.erb').read
-  db_config = YAML.load template.result(binding)
+  db_config = YAML.safe_load template.result(binding)
   db_config_admin = db_config.merge('database' => 'postgress', 'schema_search_path' => 'public')
 
   desc 'Create the database'
@@ -18,7 +20,7 @@ namespace :db do
   desc 'Migrate the database'
   task :migrate do
     ActiveRecord::Base.establish_connection(db_config)
-        ActiveRecord::MigrationContext.new("db/migrate/", ActiveRecord::SchemaMigration).migrate
+    ActiveRecord::MigrationContext.new('db/migrate/', ActiveRecord::SchemaMigration).migrate
     Rake::Task['db:schema'].invoke
     puts 'Database migrated.'
   end
@@ -31,7 +33,7 @@ namespace :db do
   end
 
   desc 'Reset the database'
-  task :reset => [:drop, :create, :migrate]
+  task reset: %i[drop create migrate]
 
   desc 'Create a db/schema.rb file'
   task :schema do
@@ -53,7 +55,7 @@ namespace :g do
     migration_class = name.split('_').map(&:capitalize).join
 
     File.open(path, 'w') do |file|
-      file.write <<-EOF
+      file.write <<~RUBY
         # frozen_string_literal: true
 
         class #{migration_class} < ActiveRecord::Migration[7.0]
@@ -61,7 +63,7 @@ namespace :g do
 
           end
         end
-      EOF
+      RUBY
     end
 
     puts "Migration #{path} created"

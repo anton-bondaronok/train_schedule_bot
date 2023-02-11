@@ -54,17 +54,15 @@ namespace :g do
     path = File.expand_path("../db/migrate/#{timestamp}_#{name}.rb", __FILE__)
     migration_class = name.split('_').map(&:capitalize).join
 
-    File.open(path, 'w') do |file|
-      file.write <<~RUBY
-        # frozen_string_literal: true
+    File.write(path, <<~RUBY)
+      # frozen_string_literal: true
 
-        class #{migration_class} < ActiveRecord::Migration[7.0]
-          def change
+      class #{migration_class} < ActiveRecord::Migration[7.0]
+        def change
 
-          end
         end
-      RUBY
-    end
+      end
+    RUBY
 
     puts "Migration #{path} created"
     abort

@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
-gem 'telegram-bot-ruby', '0.23.0'
-gem 'nokogiri', '1.14.1'
-gem 'dotenv', '2.1.1'
-gem 'pg', '1.4.5'
 gem 'activerecord', '7.0.4.2'
+gem 'dotenv', '2.1.1'
+gem 'nokogiri', '1.14.1'
+gem 'pg', '1.4.5'
 gem 'pry'
+gem 'telegram-bot-ruby', '0.23.0'
 
 gem 'rake', '11.2.2', require: false
-
+gem 'rubocop', '~> 1.45', require: false

@@ -4,7 +4,7 @@ require './lib/controllers/base'
 
 module Controllers
   class Commands < Controllers::Base
-    def handle
+    def handle # rubocop:disable Metrics/AbcSize
       case message.text
       when '/start'
         bot.api.send_message(chat_id: message.chat.id, text: "Hello, #{tg_user.first_name}")

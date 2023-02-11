@@ -5,5 +5,7 @@ gem 'nokogiri', '1.14.1'
 gem 'dotenv', '2.1.1'
 gem 'pg', '1.4.5'
 gem 'activerecord', '7.0.4.2'
-gem 'rake', '11.2.2'
 gem 'pry'
+
+gem 'rake', '11.2.2', require: false
+

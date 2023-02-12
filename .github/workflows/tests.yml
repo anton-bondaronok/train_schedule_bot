@@ -1,0 +1,18 @@
+name: Rspec
+
+on: [push]
+
+jobs:
+  rspec:
+   runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Ruby 3.1.3
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1.3
+        bundler-cache: true
+    - name: Bundle install
+      run: gem install bundler
+    - name: Run tests
+      run: bundle exec rspec

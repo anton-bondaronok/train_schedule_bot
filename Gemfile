@@ -11,3 +11,4 @@ gem 'telegram-bot-ruby', '0.23.0'
 
 gem 'rake', '11.2.2', require: false
 gem 'rubocop', '~> 1.45', require: false
+gem 'rspec', '~> 3.12', require: false

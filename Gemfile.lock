@@ -38,12 +38,12 @@ GEM
     method_source (1.0.0)
     minitest (5.17.0)
     multipart-post (2.3.0)
+    mysql2 (0.5.5)
     nokogiri (1.14.1-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.2.1.0)
       ast (~> 2.4.1)
-    pg (1.4.5)
     pry (0.14.2)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -99,8 +99,8 @@ PLATFORMS
 DEPENDENCIES
   activerecord (= 7.0.4.2)
   dotenv (= 2.1.1)
+  mysql2 (= 0.5.5)
   nokogiri (= 1.14.1)
-  pg (= 1.4.5)
   pry
   rake (= 11.2.2)
   rspec (~> 3.12)

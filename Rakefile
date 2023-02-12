@@ -8,11 +8,11 @@ namespace :db do
   Dotenv.load
   template = ERB.new File.new('config/database.yml.erb').read
   db_config = YAML.safe_load template.result(binding)
-  db_config_admin = db_config.merge('database' => 'postgress', 'schema_search_path' => 'public')
+  db_config_root = db_config.merge('password' => ENV.fetch('DB_ROOT_PASSWORD')).except('database')
 
   desc 'Create the database'
   task :create do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+    ActiveRecord::Base.establish_connection(db_config_root)
     ActiveRecord::Base.connection.create_database(db_config['database'])
     puts 'Database created.'
   end
@@ -27,7 +27,7 @@ namespace :db do
 
   desc 'Drop the database'
   task :drop do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+    ActiveRecord::Base.establish_connection(db_config_root)
     ActiveRecord::Base.connection.drop_database(db_config['database'])
     puts 'Database deleted.'
   end

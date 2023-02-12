@@ -7,8 +7,8 @@ on:
       - heroku
 
 jobs:
-  needs: rspec
   deploy:
+    needs: rspec
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

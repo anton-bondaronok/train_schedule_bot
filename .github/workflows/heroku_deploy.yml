@@ -1,10 +1,11 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - main
-      - heroku
+  workflow_run:
+    workflows: ['Unit Tests']
+    branches: [main, heroku]
+    types: 
+      - completed
 
 jobs:
   deploy:

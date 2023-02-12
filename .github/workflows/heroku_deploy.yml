@@ -13,8 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: gonuit/heroku-docker-deploy@v1.3.3
         with:
-          usedocker: true
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          email: ${{secrets.HEROKU_EMAIL}}
           process_type: worker

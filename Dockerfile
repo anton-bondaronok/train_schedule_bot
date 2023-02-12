@@ -4,4 +4,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle check || bundle install
 COPY . ./
 
-CMD ['ruby', 'bin/bot.rb']
+CMD ['./bin/bot.rb']

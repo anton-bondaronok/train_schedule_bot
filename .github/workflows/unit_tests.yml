@@ -1,9 +1,9 @@
-name: Linters
+name: Unit Tests
 
 on: [push]
 
 jobs:
-  rubocop:
+  rspec:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,5 +14,5 @@ jobs:
           bundler-cache: true
       - name: Install gems
         run: bundle install
-      - name: RuboCop
-        run: bundle exec rubocop
+      - name: Run tests
+        run: bundle exec rspec

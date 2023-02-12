@@ -7,7 +7,7 @@ on:
       - heroku
 
 jobs:
-  needs: test
+  needs: rspec
   deploy:
     runs-on: ubuntu-latest
     steps:
